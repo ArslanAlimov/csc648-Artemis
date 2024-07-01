@@ -1,0 +1,172 @@
+.outerWrap{
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    .background{
+        z-index: -999;
+        position: absolute;
+        object-fit: contain;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+}
+.wrapper{
+    width: 100%;
+    min-height: 80vh;
+    gap: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.boardHead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding: 0px 20px;
+    h2{
+        font-weight: 600;
+    }
+    &:hover .boardSetting{
+        pointer-events: initial;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.addTicket, .boardSetting{
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    
+    border: 1px solid rgba(var(--c-main-gray-open), 0.9);
+    border-radius: 5px;
+
+    background-color: white;
+    color: var(--c-main-gray);
+
+    svg{
+        width: 75%;
+        fill: var(--c-main-gray);
+    }
+}
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(359deg);
+    }
+}
+
+.boardSetting{
+    border: none;
+    opacity: 0;
+    pointer-events: none;
+    &:hover svg{
+        animation: rotate 4s infinite linear;
+    }
+    svg{
+        width: 70%;
+        transform-origin: center;
+    }
+}
+
+.board {
+    padding: 15px 15px;
+    background-color: rgba(var(--c-main-gray-open), 0.72);
+    border-radius: var(--border-radius-main);
+    width: 300px;
+    height: 85vh;
+    overflow: auto;
+    min-width: 150px;
+    transition: background-color .2s ease-in-out;
+}
+
+.ticket {
+    position: relative;
+    padding: 15px 0px;
+    border-radius: var(--border-radius-low);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    user-select: none;
+
+    &:hover{
+        cursor: pointer;    
+    }
+    &:active{
+        cursor: grabbing;
+    }
+
+    .priority{
+        position: absolute;
+        left: 15px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
+    [data-priority="0"]{
+        background-color: teal;
+    }
+    [data-priority="1"]{
+        background-color: rgb(211, 211, 0);
+    }
+    [data-priority="2"]{
+        background-color: rgb(219, 1, 1);
+    }
+
+    [data-closed="true"]{
+        text-decoration: line-through;
+    }
+    [data-closed="false"]{
+        text-decoration: none;
+    }
+}
+
+.addWrapper{
+    @extend .board;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    button{
+        width: 50%;
+        height: fit-content;
+        padding: 0px;
+        background: none;
+        &:hover svg{
+            &:hover{
+                fill: var(--c-main-purple);
+                cursor: pointer;
+            }
+        }
+    }
+    svg{
+        fill: var(--c-main-gray);
+        width: 100%;
+        transition: fill .2s ease-in-out;
+    }
+}
+
+.counter{
+    position: absolute;
+    width: fit-content;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}

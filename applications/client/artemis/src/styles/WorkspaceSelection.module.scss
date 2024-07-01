@@ -1,0 +1,62 @@
+// this outer wrapper is for the background position
+@import 'WorkspaceTile.module.scss';
+
+.outerWrap{
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .background{
+        z-index: -999;
+        position: absolute;
+        object-fit: cover;
+        height: 100%; //changes the size
+        left: 50%; //position on screen
+        top: 50%; //position on screen
+        transform: translate(-50%, -50%); //centering
+    }
+}
+
+.searchBar{
+    margin-left: auto; 
+    margin-right: auto;
+    display: block;
+    border-radius: 20px;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+//this wrapper will move all items on the page
+.tileWrapper{
+    //this block of code centers the cards on the page
+    width: 70vw;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: $tileWidth $tileWidth $tileWidth;
+
+    align-items: center;
+    justify-content: center;
+    place-items: center;
+}
+
+
+.addTile{
+    @extend %tile;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+        cursor: pointer;
+    }
+    &:hover svg{
+        transform: scale(1.1);
+        fill: var(--c-main-purple);
+    }
+    svg{
+        width:65%;
+        transition: all .2s ease-in-out;
+    }
+}

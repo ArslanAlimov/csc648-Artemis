@@ -1,0 +1,32 @@
+//this is the actual width and height of the cards
+$tileWidth: 300px;
+$tileHeight: 300px;
+
+%tile{
+    width: $tileWidth;
+    height: $tileHeight;
+    padding: 25px;
+    border-radius: 10px;
+    background: rgba(239, 239, 239, 0.8);
+    box-shadow: 4px 4px 4px rgba(80, 66, 66, 0.25);
+    border-radius: 50px;
+
+    button {
+        
+    }
+}
+
+
+.wrapper{
+    @extend %tile;
+
+    text-align: center;
+    margin: auto;
+    vertical-align: middle;
+    padding: 130px 0;
+    
+    &:hover{    
+        cursor: pointer;
+    }  
+    
+}
